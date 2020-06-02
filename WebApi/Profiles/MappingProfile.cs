@@ -1,6 +1,6 @@
 using AutoMapper;
+using Domain.Entities.Product;
 using WebApi.Dtos;
-using WebApi.Models;
 
 namespace WebApi.Profiles
 {

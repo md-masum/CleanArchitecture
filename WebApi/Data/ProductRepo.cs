@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebApi.Models;
+using Domain.Entities.Product;
+using Infrastructure.Persistence;
 
 namespace WebApi.Data
 {

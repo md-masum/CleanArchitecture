@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using WebApi.Models;
+using Domain.Entities.Product;
 
 namespace WebApi.Data
 {

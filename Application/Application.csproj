@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Behaviours" />
+      <Folder Include="Common\Exceptions" />
+      <Folder Include="Common\Messages" />
+      <Folder Include="Common\Models" />
+      <Folder Include="Common\Paging" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+    </ItemGroup>
+
+</Project>

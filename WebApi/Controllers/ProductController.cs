@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using AutoMapper;
+using Domain.Entities.Product;
+using MediatR;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Data;
 using WebApi.Dtos;
-using WebApi.Models;
 
 namespace WebApi.Controllers
 {
@@ -14,11 +15,13 @@ namespace WebApi.Controllers
     {
         private readonly IProductRepo _repo;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
-        public ProductController(IProductRepo repo, IMapper mapper)
+        public ProductController(IProductRepo repo, IMapper mapper, IMediator mediator)
         {
             _repo = repo;
             _mapper = mapper;
+            _mediator = mediator;
         }
         
         [HttpGet]

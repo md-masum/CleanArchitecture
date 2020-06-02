@@ -1,5 +1,7 @@
 using System;
+using Application.IoC;
 using AutoMapper;
+using Infrastructure.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +26,8 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+            services.AddApplication();
+            services.AddInfrastructure(Configuration);
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using Domain.Common;
 
-namespace WebApi.Models
+namespace Domain.Entities.Product
 {
-    public class Product
+    public class Product : AuditableEntity
     {
         [Key]
         public int Id { get; set; }
