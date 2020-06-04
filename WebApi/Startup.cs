@@ -1,4 +1,5 @@
 using System;
+using Application.Common.Interfaces;
 using Application.IoC;
 using AutoMapper;
 using Infrastructure.IoC;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using WebApi.Data;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -39,7 +41,7 @@ namespace WebApi
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "Clean Architecture Template", Version = "v2" });
             });
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddScoped<IProductRepo, ProductRepo>();
         }

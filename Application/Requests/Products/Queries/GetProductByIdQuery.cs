@@ -17,9 +17,9 @@ namespace Application.Requests.Products.Queries
         public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductToReturnDto>
         {
             private readonly IProductService _productService;
-            private readonly Mapper _mapper;
+            private readonly IMapper _mapper;
 
-            public GetProductByIdQueryHandler(IProductService productService, Mapper mapper)
+            public GetProductByIdQueryHandler(IProductService productService, IMapper mapper)
             {
                 _productService = productService;
                 _mapper = mapper;

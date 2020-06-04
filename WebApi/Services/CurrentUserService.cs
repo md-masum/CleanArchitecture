@@ -7,12 +7,16 @@ namespace WebApi.Services
 {
     public class CurrentUserService : ICurrentUserService
     {
-        public CurrentUserService(IHttpContextAccessor httpContextAccessor)
+        public CurrentUserService(/*IHttpContextAccessor httpContextAccessor*/)
         {
-            UserId = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            Email = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
-            UserName = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
-            Phone = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.MobilePhone);
+            //UserId = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            //Email = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
+            //UserName = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name);
+            //Phone = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.MobilePhone);
+            UserId = "1";
+            UserName = "admin";
+            Email = "admin@gmail.com";
+            Phone = "0123456789";
         }
         
         public string UserId { get; }

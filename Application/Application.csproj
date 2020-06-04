@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,8 +9,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Common\Behaviours" />
-      <Folder Include="Common\Exceptions" />
       <Folder Include="Common\Messages" />
       <Folder Include="Common\Models" />
       <Folder Include="Common\Paging" />
@@ -19,6 +17,9 @@
     <ItemGroup>
       <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+      <PackageReference Include="morelinq" Version="3.3.2" />
+      <PackageReference Include="NLog.Extensions.Logging" Version="1.6.4" />
     </ItemGroup>
 
 </Project>

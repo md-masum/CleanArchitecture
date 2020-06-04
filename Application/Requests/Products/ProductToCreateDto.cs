@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using Application.Common.Mappings;
+using Domain.Entities.Product;
 
 namespace Application.Requests.Products
 {
-    public class ProductToCreateDto
+    public class ProductToCreateDto : IMapFrom<Product>
     {
         [Required]
         [StringLength(250)]

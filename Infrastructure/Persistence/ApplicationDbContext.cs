@@ -10,13 +10,11 @@ namespace Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {
-        private readonly ICurrentUserService _currentUserService;
         private readonly IDateTime _dateTime;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opt, ICurrentUserService currentUserService,
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opt,
             IDateTime dateTime) : base(opt)
         {
-            _currentUserService = currentUserService;
             _dateTime = dateTime;
         }
 
@@ -29,11 +27,11 @@ namespace Infrastructure.Persistence
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedBy = _currentUserService.UserId;
+                        entry.Entity.CreatedBy = "1";
                         entry.Entity.CreateDate = _dateTime.Now;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.UpdateBy = _currentUserService.UserId;
+                        entry.Entity.UpdateBy = "1";
                         entry.Entity.UpdateDate = _dateTime.Now;
                         break;
                     case EntityState.Detached:

@@ -1,4 +1,7 @@
+using Application.Common.Interfaces;
+using Application.Requests.Products;
 using Infrastructure.Persistence;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +16,9 @@ namespace Infrastructure.IoC
             services.AddDbContext<ApplicationDbContext>(opt =>
                 opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+
+            services.AddScoped<IDateTime, DateTimeService>();
+            services.AddScoped<IProductService, ProductService>();
             
             return services;
         }

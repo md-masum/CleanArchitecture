@@ -1,6 +1,9 @@
+using Application.Common.Mappings;
+using Domain.Entities.Product;
+
 namespace Application.Requests.Products
 {
-    public class ProductToReturnDto
+    public class ProductToReturnDto : IMapFrom<Product>
     {
         public int Id { get; set; }
         public string Name { get; set; }
