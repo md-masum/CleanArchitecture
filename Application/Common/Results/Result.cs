@@ -5,14 +5,14 @@ namespace Application.Common.Results
 {
     public class Result
     {
-        internal Result(bool succeeded, IEnumerable<string> errors, string success)
+        private Result(bool succeeded, IEnumerable<string> errors, string success)
         {
             Succeeded = succeeded;
             Errors = errors.ToArray();
             Message = success;
         }
 
-        private bool Succeeded { get; set; }
+        public bool Succeeded { get; set; }
 
         private string Message { get; set; }
 

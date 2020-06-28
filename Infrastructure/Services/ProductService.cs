@@ -33,7 +33,7 @@ namespace Infrastructure.Services
 
         public async Task<Result> CreateProduct(Product product)
         {
-            _context.Add(product);
+            await _context.AddAsync(product);
             var result = await _context.SaveChangesAsync();
             
             return result > 0 ? Result.Success() : Result.Failure(new List<string> {"can't save product"});
@@ -43,13 +43,10 @@ namespace Infrastructure.Services
         {
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
-            if (product != null)
-            {
-                _context.Remove(product);
-                await _context.SaveChangesAsync();
-                return Result.Success();
-            }
-            return Result.Failure(new List<string> {"can't delete product"});
+            if (product == null) return Result.Failure(new List<string> {"can't delete product"});
+            _context.Remove(product);
+            await _context.SaveChangesAsync();
+            return Result.Success();
         }
     }
 }

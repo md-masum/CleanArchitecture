@@ -17,7 +17,9 @@ namespace Application.Common.Behaviours
             _currentUserService = currentUserService;
         }
 
+#pragma warning disable 1998
         public async Task Process(TRequest request, CancellationToken cancellationToken)
+#pragma warning restore 1998
         {
             var requestName = typeof(TRequest).Name;
             var userId = _currentUserService.UserId;

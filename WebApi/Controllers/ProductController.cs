@@ -1,6 +1,9 @@
 using System.Threading.Tasks;
+using Application.Requests.Products;
+using Application.Requests.Products.Commands;
 using Application.Requests.Products.Queries;
 using AutoMapper;
+using Domain.Entities.Product;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Data;
@@ -39,15 +42,15 @@ namespace WebApi.Controllers
             return NotFound();
         }
 
-        //[HttpPost]
-        //public IActionResult CreateProduct(ProductToCreateDto productToCreateDto)
-        //{
-        //    var product = _mapper.Map<Product>(productToCreateDto);
-        //    _repo.CreateProduct(product);
-        //    _repo.SaveChanges();
-        //    var productToReturn =  _mapper.Map<ProductToReturnDto>(product);
-        //    return CreatedAtRoute(nameof(GetProductById), new {id = productToReturn.Id}, productToReturn);
-        //}
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductCommand command)
+        {
+            var (result, productToReturnDto) = await _mediator.Send(command);
+            if(result.Succeeded)
+                return CreatedAtRoute(nameof(GetProductById), new {id = productToReturnDto.Id}, productToReturnDto);
+            
+            return BadRequest(result.Errors);
+        }
 
         //[HttpPut("{id}")]
         //public IActionResult UpdateProduct(int id, ProductToUpdateDto productToUpdateDto)
@@ -79,17 +82,15 @@ namespace WebApi.Controllers
         //    return NoContent();
         //}
 
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteProduct(int id)
-        //{
-        //    var product = _repo.GetProductById(id);
-        //    if (product == null)
-        //        return NotFound();
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var result = await _mediator.Send(new DeleteProductCommand(id));
 
-        //    _repo.DeleteProduct(product);
-        //    _repo.SaveChanges();
-
-        //    return NoContent();
-        //}
+            if (result.Succeeded)
+                return Ok("delete successfully");
+            
+            return BadRequest(result.Errors);
+        }
     }
 }
