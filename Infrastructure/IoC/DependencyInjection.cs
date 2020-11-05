@@ -14,7 +14,7 @@ namespace Infrastructure.IoC
             IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(opt =>
-                opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                opt.UseSqlite(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
             services.AddScoped<IDateTime, DateTimeService>();

@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Common
 {
@@ -6,6 +7,7 @@ namespace Domain.Common
     {
         public bool IsSoftDelete { get; set; }
         
+        // [Column("")]
         public string CreatedBy { get; set; }
 
         public DateTime? CreateDate { get; set; }
